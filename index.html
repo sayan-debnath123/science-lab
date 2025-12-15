@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Masterclass | Curriculum</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --dark: #1e293b;
+            --bg: #f8fafc;
+            --gold: #f59e0b; /* For Projects */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--bg); color: #333; }
+
+        /* --- HEADER --- */
+        .course-header {
+            background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute; top: 20px; left: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white; padding: 8px 15px; border-radius: 20px;
+            text-decoration: none; font-weight: bold; font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: white; color: var(--primary); }
+
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .subtitle { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+        /* --- TIMELINE CONTAINER --- */
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+
+        .week-title {
+            color: var(--dark);
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 1.5rem;
+        }
+
+        /* --- LESSON GRID --- */
+        .lesson-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .day-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+            cursor: pointer;
+            border-left: 5px solid transparent; /* Default border */
+        }
+
+        .day-card:hover { transform: translateX(5px); }
+
+        /* Status: Completed */
+        .day-card.completed { border-left-color: #10b981; }
+        .day-card.completed .status-icon { color: #10b981; } /* Green Check */
+
+        /* Status: Locked */
+        .day-card.locked { opacity: 0.7; cursor: not-allowed; background: #f1f5f9; }
+        .day-card.locked:hover { transform: none; }
+        
+        /* Day Label */
+        .day-label {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .topic-title { font-size: 1.1rem; font-weight: 600; color: #333; }
+
+        /* --- SPECIAL: INDUSTRIAL PROJECT CARD --- */
+        .project-card {
+            background: linear-gradient(135deg, #fffbeb 0%, #fff7ed 100%);
+            border: 2px solid var(--gold);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .project-card:hover { box-shadow: 0 10px 25px rgba(245, 158, 11, 0.2); transform: scale(1.02); }
+
+        .project-badge {
+            background: var(--gold); color: white;
+            display: inline-block; padding: 5px 15px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: bold; margin-bottom: 10px;
+        }
+
+        .project-title { font-size: 1.4rem; font-weight: bold; color: #92400e; margin-bottom: 10px; }
+        .project-desc { color: #b45309; font-size: 0.95rem; }
+
+    </style>
+</head>
+<body>
+
+    <div class="course-header">
+        <a href="dashboard.html" class="back-btn">← Back to Dashboard</a>
+        <h1>Python Zero to Hero</h1>
+        <p class="subtitle">A 28-day structured journey from basic syntax to real-world AI applications.</p>
+    </div>
+
+    <div class="container">
+        
+        <h2 class="week-title">Week 1: Python Basics & Logic</h2>
+        <div class="lesson-list">
+            
+            <div class="day-card completed" onclick="openLesson(1)">
+                <div><div class="day-label">Day 1</div><div class="topic-title">Python Installation & First Code</div></div>
+                <div class="status-icon">✅</div>
+            </div>
+            <div class="day-card completed" onclick="openLesson(2)">
+                <div><div class="day-label">Day 2</div><div class="topic-title">Variables & Data Types</div></div>
+                <div class="status-icon">✅</div>
+            </div>
+            <div class="day-card" style="border-left-color: #4f46e5;" onclick="openLesson(3)">
+                <div><div class="day-label">Day 3</div><div class="topic-title">Control Flow (If/Else)</div></div>
+                <div class="status-icon">▶️</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 4</div><div class="topic-title">Loops (For & While)</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 5</div><div class="topic-title">Functions & Scope</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 6</div><div class="topic-title">Data Structures (Lists/Dicts)</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+
+            <div class="project-card" onclick="alert('Unlock this by completing Week 1!')">
+                <div class="project-badge">🏆 WEEK 1 PROJECT</div>
+                <div class="project-title">Day 7: ATM Banking Simulation</div>
+                <p class="project-desc">Build a CLI Banking System using loops, functions, and logic to handle deposits, withdrawals, and pin verification.</p>
+            </div>
+        </div>
+
+
+        <h2 class="week-title">Week 2: OOP & File Handling</h2>
+        <div class="lesson-list">
+            
+            <div class="day-card locked">
+                <div><div class="day-label">Day 8</div><div class="topic-title">File Handling (Read/Write)</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 9</div><div class="topic-title">OOP: Classes & Objects</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 10</div><div class="topic-title">OOP: Inheritance & Polymorphism</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 11</div><div class="topic-title">Exception Handling (Try/Except)</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 12</div><div class="topic-title">Modules & Pip (Libraries)</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 13</div><div class="topic-title">Working with Dates & Time</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+
+            <div class="project-card" style="opacity: 0.8;">
+                <div class="project-badge">🏆 WEEK 2 PROJECT</div>
+                <div class="project-title">Day 14: Library Management System</div>
+                <p class="project-desc">A complete system using OOP to manage books, members, and due dates, saving data permanently to text files.</p>
+            </div>
+        </div>
+
+
+        <h2 class="week-title">Week 3: Data Handling & APIs</h2>
+        <div class="lesson-list">
+            
+            <div class="day-card locked">
+                <div><div class="day-label">Day 15</div><div class="topic-title">Working with CSV & JSON</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 16</div><div class="topic-title">Intro to Pandas (Data Analysis)</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 17</div><div class="topic-title">Data Visualization (Matplotlib)</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 18</div><div class="topic-title">Web Scraping (BeautifulSoup)</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 19</div><div class="topic-title">Understanding APIs (Requests)</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 20</div><div class="topic-title">Virtual Environments</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+
+            <div class="project-card" style="opacity: 0.7;">
+                <div class="project-badge">🏆 WEEK 3 PROJECT</div>
+                <div class="project-title">Day 21: Live Weather Dashboard</div>
+                <p class="project-desc">Fetch real-time weather data from an API and visualize the temperature trends using Matplotlib.</p>
+            </div>
+        </div>
+
+
+        <h2 class="week-title">Week 4: Databases & Applications</h2>
+        <div class="lesson-list">
+            
+            <div class="day-card locked">
+                <div><div class="day-label">Day 22</div><div class="topic-title">Intro to SQL & Databases</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 23</div><div class="topic-title">SQLite with Python</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 24</div><div class="topic-title">Building GUIs (Tkinter Basics)</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 25</div><div class="topic-title">Advanced GUI Widgets</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 26</div><div class="topic-title">Connecting GUI to Database</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            <div class="day-card locked">
+                <div><div class="day-label">Day 27</div><div class="topic-title">Building an Executable (.exe)</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+
+            <div class="project-card" style="opacity: 0.6;">
+                <div class="project-badge">🏆 WEEK 4 PROJECT</div>
+                <div class="project-title">Day 28: Student Management System</div>
+                <p class="project-desc">A full desktop application with a login screen, dashboard, and database to Add/Delete/Update student records.</p>
+            </div>
+        </div>
+
+        <h2 class="week-title">Final Capstone</h2>
+        <div class="lesson-list">
+            <div class="day-card locked">
+                <div><div class="day-label">Day 29</div><div class="topic-title">Code Optimization & Git</div></div>
+                <div class="status-icon">🔒</div>
+            </div>
+            
+            <div class="project-card" style="background: linear-gradient(135deg, #4f46e5 0%, #1e1b4b 100%); border: none; color: white;">
+                <div class="project-badge" style="background: white; color: #4f46e5;">🚀 FINAL GRADUATION PROJECT</div>
+                <div class="project-title" style="color: white;">Day 30: AI Chatbot Assistant</div>
+                <p class="project-desc" style="color: #c7d2fe;">Combine everything! Build a smart assistant that can answer questions, fetch weather data, and save chat logs to a database.</p>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+    <script>
+        function openLesson(day) {
+            // This is where you would link to the actual video page
+            // e.g. window.location.href = "video-player.html?day=" + day;
+            alert("Opening Lesson for Day " + day + "...");
+        }
+    </script>
+
+</body>
+</html>
